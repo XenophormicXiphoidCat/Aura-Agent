@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aura Spa Chatbot Demo</title>
 
-  <!-- Chat CSS -->
+  <!-- Chat Widget CSS -->
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
-  <!-- Custom Dark Mode Styling -->
   <style>
     :root {
       --chat--color-primary: #ffffff;
@@ -22,7 +21,7 @@
       --chat--color-light-shade-50: #202020;
       --chat--color-light-shade-100: #303030;
       --chat--color-medium: #404040;
-      --chat--color-dark: #fff;
+      --chat--color-dark: #ffffff;
       --chat--color-disabled: #888;
       --chat--color-typing: #555;
 
@@ -39,54 +38,47 @@
       --chat--window--width: 400px;
       --chat--window--height: 600px;
       --chat--header-height: auto;
-      --chat--header--padding: 1.2rem;
+      --chat--header--padding: 1rem 1.25rem;
       --chat--header--background: #1a1a1a;
       --chat--header--color: #fff;
-      --chat--heading--font-size: 1.5rem;
-      --chat--subtitle--font-size: 0.92rem;
-      --chat--subtitle--line-height: 1.4;
+      --chat--heading--font-size: 1.3rem;
+      --chat--subtitle--font-size: 0.95rem;
+      --chat--subtitle--line-height: 1.2;
     }
 
     body {
-      background-color: #111;
-      color: #fff;
-      font-family: system-ui, sans-serif;
       margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       height: 100vh;
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      color: white;
     }
 
     h1 {
       position: absolute;
-      top: 3rem;
-      left: 3rem;
+      top: 2rem;
+      left: 2rem;
       font-size: 2rem;
-      color: #fff;
+      color: white;
     }
 
-    /* Dark floating button styles */
-    .n8n-chat-toggle {
-      background-color: #111 !important;
-      color: #fff !important;
-      border: 1px solid #333 !important;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-    }
-
-    .n8n-chat-toggle:hover {
-      background-color: #222 !important;
-    }
-
-    /* Input field dark mode fix */
+    /* Ensure input field is dark */
     .n8n-chat-input {
       background-color: #111 !important;
       color: #fff !important;
     }
-
     .n8n-chat-input::placeholder {
       color: #aaa !important;
+    }
+
+    /* Toggle Button dark styling */
+    .n8n-chat-toggle {
+      background-color: #000 !important;
+      color: white !important;
+      border: 1px solid #333 !important;
     }
   </style>
 </head>
@@ -99,10 +91,7 @@
 
     createChat({
       webhookUrl: 'https://xxc.app.n8n.cloud/webhook/cc9181f1-6d2f-4094-a059-b1925e02d877/chat',
-      webhookConfig: {
-        method: 'POST',
-        headers: {}
-      },
+      webhookConfig: { method: 'POST', headers: {} },
       target: '#n8n-chat',
       mode: 'window',
       chatInputKey: 'chatInput',
@@ -119,12 +108,11 @@
       i18n: {
         en: {
           title: 'Welcome to Aura 🌿',
-          subtitle: 'Let’s chat about treatments, booking, or wellness 🌸',
-          footer: '',
-          getStarted: 'New Conversation',
+          subtitle: 'Chat with us about wellness, treatments, or booking 💆‍♀️',
           inputPlaceholder: 'Type your question here…',
-        },
-      },
+          footer: '',
+        }
+      }
     });
   </script>
 </body>
