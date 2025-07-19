@@ -3,85 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aura Spa Chatbot</title>
+  <title>Aura Spa Chatbot Demo</title>
 
-  <!-- n8n Chat Widget CSS (default) -->
+  <!-- Chat CSS -->
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
-  <!-- 🌙 Custom Dark Mode Style (host this yourself if you want more control) -->
+  <!-- Custom Dark Mode Styling -->
   <style>
     :root {
-      --chat--color-primary: #e6a6ac;
-      --chat--color-primary-shade-50: #d48c93;
-      --chat--color-primary-shade-100: #c27881;
+      --chat--color-primary: #ffffff;
+      --chat--color-primary-shade-50: #cccccc;
+      --chat--color-primary-shade-100: #aaaaaa;
+      --chat--color-secondary: #20b69e;
+      --chat--color-secondary-shade-50: #1ca08a;
 
-      --chat--color-secondary: #7cc1ae;
-      --chat--color-secondary-shade-50: #68b2a0;
+      --chat--color-white: #111;
+      --chat--color-light: #181818;
+      --chat--color-light-shade-50: #202020;
+      --chat--color-light-shade-100: #303030;
+      --chat--color-medium: #404040;
+      --chat--color-dark: #fff;
+      --chat--color-disabled: #888;
+      --chat--color-typing: #555;
 
-      --chat--color-white: #ffffff;
-      --chat--color-light: #1e1e1e;
-      --chat--color-light-shade-50: #2a2a2a;
-      --chat--color-light-shade-100: #333333;
-      --chat--color-medium: #4f4f4f;
-      --chat--color-dark: #0f0f0f;
-      --chat--color-disabled: #777980;
-      --chat--color-typing: #b0b0b0;
-
-      --chat--spacing: 1.2rem;
-      --chat--border-radius: 1rem;
-      --chat--transition-duration: 0.2s;
-
-      --chat--window--width: 420px;
-      --chat--window--height: 620px;
-
-      --chat--header-height: auto;
-      --chat--header--padding: var(--chat--spacing);
-      --chat--header--background: #111111;
-      --chat--header--color: var(--chat--color-white);
-      --chat--heading--font-size: 1.8em;
-      --chat--subtitle--font-size: 1em;
-      --chat--subtitle--line-height: 1.6;
-
-      --chat--textarea--height: 54px;
-
-      --chat--message--font-size: 1rem;
-      --chat--message--padding: var(--chat--spacing);
-      --chat--message--border-radius: var(--chat--border-radius);
-      --chat--message-line-height: 1.8;
-
-      --chat--message--bot--background: #1c1c1c;
+      --chat--message--bot--background: #1a1a1a;
       --chat--message--bot--color: #f0f0f0;
-      --chat--message--bot--border: none;
+      --chat--message--user--background: #20b69e;
+      --chat--message--user--color: #fff;
 
-      --chat--message--user--background: var(--chat--color-secondary);
-      --chat--message--user--color: var(--chat--color-dark);
-      --chat--message--user--border: none;
+      --chat--toggle--background: #111;
+      --chat--toggle--hover--background: #222;
+      --chat--toggle--active--background: #333;
+      --chat--toggle--color: #fff;
 
-      --chat--message--pre--background: rgba(255, 255, 255, 0.05);
-
-      --chat--toggle--background: var(--chat--color-primary);
-      --chat--toggle--hover--background: var(--chat--color-primary-shade-50);
-      --chat--toggle--active--background: var(--chat--color-primary-shade-100);
-      --chat--toggle--color: var(--chat--color-white);
-      --chat--toggle--size: 64px;
+      --chat--window--width: 400px;
+      --chat--window--height: 600px;
+      --chat--header-height: auto;
+      --chat--header--padding: 1rem;
+      --chat--header--background: #1a1a1a;
+      --chat--header--color: #fff;
+      --chat--heading--font-size: 1.5rem;
+      --chat--subtitle--font-size: 0.95rem;
+      --chat--subtitle--line-height: 1.4;
     }
 
     body {
-      background-color: #0f0f0f;
-      color: white;
+      background-color: #111;
+      color: #fff;
       font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      position: absolute;
+      top: 3rem;
+      left: 3rem;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    /* Dark floating button styles */
+    .n8n-chat-toggle {
+      background-color: #111 !important;
+      color: #fff !important;
+      border: 1px solid #333 !important;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    }
+
+    .n8n-chat-toggle:hover {
+      background-color: #222 !important;
+    }
+
+    /* Input field dark mode fix */
+    .n8n-chat-input {
+      background-color: #111 !important;
+      color: #fff !important;
+    }
+
+    .n8n-chat-input::placeholder {
+      color: #aaa !important;
     }
   </style>
 </head>
 <body>
-  <h1 style="text-align:center; margin-top: 100px;">Aura Spa Chatbot Demo</h1>
+  <h1>Aura Spa Chatbot Demo</h1>
+  <div id="n8n-chat"></div>
 
-  <!-- n8n Chatbot Script -->
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
     createChat({
       webhookUrl: 'https://xxc.app.n8n.cloud/webhook/cc9181f1-6d2f-4094-a059-b1925e02d877/chat',
+      webhookConfig: {
+        method: 'POST',
+        headers: {}
+      },
       target: '#n8n-chat',
       mode: 'window',
       chatInputKey: 'chatInput',
@@ -98,10 +119,10 @@
       i18n: {
         en: {
           title: 'Welcome to Aura 🌿',
-          subtitle: "Ask about treatments, booking, or anything wellness-related.",
+          subtitle: 'Let’s chat about treatments, booking, or wellness support.',
           footer: '',
-          getStarted: 'Start a new conversation',
-          inputPlaceholder: 'Type your question here...',
+          getStarted: 'New Conversation',
+          inputPlaceholder: 'Type your question here…',
         },
       },
     });
