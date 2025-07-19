@@ -1,8 +1,35 @@
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-<script type="module">
-	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+<div id="n8n-chat"></div>
 
-	createChat({
-		webhookUrl: 'https://xxc.app.n8n.cloud/webhook/cc9181f1-6d2f-4094-a059-b1925e02d877/chat'
-	});
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+  createChat({
+    webhookUrl: 'https://xxc.app.n8n.cloud/webhook/cc9181f1-6d2f-4094-a059-b1925e02d877/chat',
+    webhookConfig: {
+      method: 'POST',
+      headers: {}
+    },
+    target: '#n8n-chat',
+    mode: 'window',
+    chatInputKey: 'chatInput',
+    chatSessionKey: 'sessionId',
+    loadPreviousSession: true,
+    metadata: {},
+    showWelcomeScreen: false,
+    defaultLanguage: 'en',
+    initialMessages: [
+      "Hi! 🌿 I'm Aura, your wellness assistant at Cosmo Contour & Spa.",
+      "How can I help you feel your best today?"
+    ],
+    i18n: {
+      en: {
+        title: 'Aura – Cosmo Contour & Spa ✨',
+        subtitle: 'Ask me anything about wellness, treatments, or bookings.',
+        footer: '',
+        getStarted: 'New Conversation',
+        inputPlaceholder: 'Type your question…',
+      },
+    },
+  });
 </script>
