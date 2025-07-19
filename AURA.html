@@ -1,41 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cosmo Contour & Spa Chat</title>
-  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-</head>
-<body>
-  <div id="n8n-chat"></div>
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
-  <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-    createChat({
-      webhookUrl: 'https://xxc.app.n8n.cloud/webhook/cc9181f1-6d2f-4094-a059-b1925e02d877/chat',
-      target: '#n8n-chat',
-      mode: 'window',
-      chatInputKey: 'chatInput',
-      chatSessionKey: 'sessionId',
-      loadPreviousSession: true,
-      showWelcomeScreen: false,
-      defaultLanguage: 'en',
-      initialMessages: [
-        'Hi there! 🌸',
-        'Welcome to Cosmo Contour & Spa — where beauty meets wellness.',
-        'How can I help you today?'
-      ],
-      i18n: {
-        en: {
-          title: 'Hi there! 🌸',
-          subtitle: "Let’s glow — chat with us anytime 💬",
-          footer: '',
-          getStarted: 'Start New Conversation',
-          inputPlaceholder: 'Type your question here...',
-        },
-      },
-    });
-  </script>
-</body>
-</html>
+	createChat({
+		webhookUrl: 'https://xxc.app.n8n.cloud/webhook/cc9181f1-6d2f-4094-a059-b1925e02d877/chat'
+	});
+</script>
