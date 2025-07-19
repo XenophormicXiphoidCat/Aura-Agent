@@ -3,12 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cosmo Contour & Spa Chat</title>
+  <title>Aura Spa Chatbot</title>
+
+  <!-- n8n Chat Widget CSS (default) -->
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+  <!-- 🌙 Custom Dark Mode Style (host this yourself if you want more control) -->
+  <style>
+    :root {
+      --chat--color-primary: #e6a6ac;
+      --chat--color-primary-shade-50: #d48c93;
+      --chat--color-primary-shade-100: #c27881;
+
+      --chat--color-secondary: #7cc1ae;
+      --chat--color-secondary-shade-50: #68b2a0;
+
+      --chat--color-white: #ffffff;
+      --chat--color-light: #1e1e1e;
+      --chat--color-light-shade-50: #2a2a2a;
+      --chat--color-light-shade-100: #333333;
+      --chat--color-medium: #4f4f4f;
+      --chat--color-dark: #0f0f0f;
+      --chat--color-disabled: #777980;
+      --chat--color-typing: #b0b0b0;
+
+      --chat--spacing: 1.2rem;
+      --chat--border-radius: 1rem;
+      --chat--transition-duration: 0.2s;
+
+      --chat--window--width: 420px;
+      --chat--window--height: 620px;
+
+      --chat--header-height: auto;
+      --chat--header--padding: var(--chat--spacing);
+      --chat--header--background: #111111;
+      --chat--header--color: var(--chat--color-white);
+      --chat--heading--font-size: 1.8em;
+      --chat--subtitle--font-size: 1em;
+      --chat--subtitle--line-height: 1.6;
+
+      --chat--textarea--height: 54px;
+
+      --chat--message--font-size: 1rem;
+      --chat--message--padding: var(--chat--spacing);
+      --chat--message--border-radius: var(--chat--border-radius);
+      --chat--message-line-height: 1.8;
+
+      --chat--message--bot--background: #1c1c1c;
+      --chat--message--bot--color: #f0f0f0;
+      --chat--message--bot--border: none;
+
+      --chat--message--user--background: var(--chat--color-secondary);
+      --chat--message--user--color: var(--chat--color-dark);
+      --chat--message--user--border: none;
+
+      --chat--message--pre--background: rgba(255, 255, 255, 0.05);
+
+      --chat--toggle--background: var(--chat--color-primary);
+      --chat--toggle--hover--background: var(--chat--color-primary-shade-50);
+      --chat--toggle--active--background: var(--chat--color-primary-shade-100);
+      --chat--toggle--color: var(--chat--color-white);
+      --chat--toggle--size: 64px;
+    }
+
+    body {
+      background-color: #0f0f0f;
+      color: white;
+      font-family: system-ui, sans-serif;
+    }
+  </style>
 </head>
 <body>
-  <div id="n8n-chat"></div>
+  <h1 style="text-align:center; margin-top: 100px;">Aura Spa Chatbot Demo</h1>
 
+  <!-- n8n Chatbot Script -->
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
@@ -19,19 +87,20 @@
       chatInputKey: 'chatInput',
       chatSessionKey: 'sessionId',
       loadPreviousSession: true,
+      metadata: {},
       showWelcomeScreen: false,
       defaultLanguage: 'en',
       initialMessages: [
-        'Hi there! 🌸',
-        'Welcome to Cosmo Contour & Spa — where beauty meets wellness.',
-        'How can I help you today?'
+        'Hi there! 👋',
+        'Welcome to Aura — your wellness journey begins here.',
+        'How can I help you today? 🌿'
       ],
       i18n: {
         en: {
-          title: 'Hi there! 🌸',
-          subtitle: "Let’s glow — chat with us anytime 💬",
+          title: 'Welcome to Aura 🌿',
+          subtitle: "Ask about treatments, booking, or anything wellness-related.",
           footer: '',
-          getStarted: 'Start New Conversation',
+          getStarted: 'Start a new conversation',
           inputPlaceholder: 'Type your question here...',
         },
       },
